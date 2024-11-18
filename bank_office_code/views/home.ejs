@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCL Bank</title>
+    <script>
+    function toggleVisibility(formId) {
+        const form = document.getElementById(formId);
+        if (form.style.display === 'block') {
+            form.style.display = 'none';
+        } else {
+            form.style.display = 'block';
+        }
+    }
+
+    function allLoanApplicationShow() 
+        {
+            window.location.href = "/allLoanDetails"; // Correct client-side redirection
+        }
+
+    </script>
+    
+
+<link rel="stylesheet" href="../style/style.css">
+
+</head>
+<body>
+    <nav>
+        <a href="/" class="active">Home</a>
+        <a href="/">About</a>
+        <a href="/">Contact Us</a>
+      </nav>
+
+    <div class = "section">
+    <!-- NEW ACCOUNT CREATE -->
+    <h1>New Account Register</h1>
+    <button onclick="toggleVisibility('newAccountRegisterForm')">Create New</button>
+    <form id="newAccountRegisterForm" action="/newAccount" method="POST" style="display: none;">
+        <input type="text" name="name" placeholder="Name" required>
+        <br><br>
+        <input type="text" name="phone" placeholder="Phone" required>
+        <br><br>
+        <input type="text" name="address" placeholder="Address" required>
+        <br><br>
+        <button type="submit">Create</button>
+    </form>
+</div>
+
+    <!-- Transaction Button -->
+     <div class = "section">
+    <h1>Bank Transfer</h1>
+
+    <button onclick="toggleVisibility('transactionForm')">Transaction</button>
+    <form id="transactionForm" action="/transfer" method="POST" style="display: none;">
+        <label for="transactionSender">Sender Account Number:</label>
+        <input type="text" id="transactionSender" name="senderAccount" required>
+        <br><br>
+
+        <label for="transactionRecipient">Recipient Account Number:</label>
+        <input type="text" id="transactionRecipient" name="recipientAccount" required>
+        <br><br>
+
+        <label for="transactionAmount">Amount:</label>
+        <input type="number" id="transactionAmount" name="amount" required min="1" step="0.01">
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+
+
+
+    <!-- Loan Section -->
+     <div class  = "section">
+    <h2>Approve Loan</h2>
+    <button onclick="toggleVisibility('loanForm')">Approve Loan</button>
+    <form id="loanForm" action="/loan" method="POST" style="display: none;">
+        <label for="loanId">Loan ID:</label>
+        <input type="number" id="loanId" name="loanId" placeholder="Enter 10-digit loan ID" required>
+        <br><br>
+        <button type="submit">Approve</button>
+    </form>
+</div>
+
+
+    <!-- Bank Transfer Section -->
+     <div class="section">
+    <h2>Transfer to Account No</h2>
+    <button onclick="toggleVisibility('bankTransactionForm')">Transfer</button>
+    <form id="bankTransactionForm" action="/bankTransfer" method="POST" style="display: none;">
+        <label for="bankRecipient">Recipient Account Number:</label>
+        <input type="text" id="bankRecipient" name="recipientAccount" required>
+        <br><br>
+
+        <label for="bankAmount">Amount:</label>
+        <input type="number" id="bankAmount" name="amount" required min="1" step="0.01">
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+    <!-- Loan Applications -->
+    <div class = "section">
+    <h2>Loan Applications</h2>
+
+    <button onclick ="allLoanApplicationShow()">See Loans</button>
+</div>
+
+</body>
+
+</html>

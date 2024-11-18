@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCL Bank | Loan</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-spacing: 0;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f2f2f2; /* Alternating row color */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Hover effect for rows */
+        }
+
+        /* Styling for empty records message */
+        td[colspan="6"] {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+
+        /* Responsive styling for small screens */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    
+<!-- custid
+455245188230
+loanId
+3957378323
+loanType
+"Education"
+ammount
+20000
+stat
+"Pending"
+    <div> -->
+
+    <% if (locals.Loans) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Customer Id</th>
+                    <th>Loan Id</th>
+                    <th>Loan Type</th>
+                    <th>Ammount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (Array.isArray(Loans) && Loans.length > 0) 
+                { %>
+                    <% Loans.forEach((loan, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= loan.custid %></td>
+                            <td><%= loan.loanId %></td>
+                            <td><%= loan.loanType %></td>
+                            <td><%= loan.ammount %></td>
+                            <td><%= loan.stat %></td>
+                        </tr>
+                    <% }); %>
+                <% } 
+                
+                else 
+                { %>
+                    <tr>
+                        <td colspan="6">No loan records found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+            
+        </table>
+    <% } %>
+</div>
+</body>
+</html>
