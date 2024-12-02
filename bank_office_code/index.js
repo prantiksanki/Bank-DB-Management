@@ -62,8 +62,14 @@ app.post("/signup", async (req, res) => {
         let max = 999999999999;  
         const empid = Math.floor(Math.random() * (max - min + 1)) + min;
 
-        await Employee.create({ name, phone, address, empid , bankId , bankAddress  });
-       await Branch.create({bankId ,bankAddress, bankAddress ,empid}) ;
+       await Employee.create({ name, phone, address, empid , bankId , bankAddress  });
+    //    await Branch.create({bankId ,bankAddress, bankAddress ,empid}) ;
+       await Branch.create({
+        branchId : bankId,
+        branchName : bankAddress,
+        bankAddress : bankAddress ,
+        empId : empid 
+    });
         return res.send(`<h3>Employee Registered Successfully</h3>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Address:</strong> ${address}</p>
